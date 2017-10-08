@@ -1,0 +1,74 @@
+#!/bin/sh
+PATH=/sbin:/bin:/usr/sbin:/usr/bin:/usr/local/bin:
+runlevel=S
+prevlevel=N
+umask 022
+export PATH runlevel prevlevel
+
+/bin/hostname Hanon
+
+
+# mount filesystems
+/bin/mount -t proc /proc /proc
+/bin/mount -t sysfs sysfs /sys
+/bin/mount -t tmpfs tmpfs /dev
+
+# create necessary devices
+/bin/mknod /dev/null c 1 3
+/bin/mkdir /dev/pts
+/bin/mount -t devpts devpts /dev/pts
+#/bin/mknod /dev/ts c 10 16
+/bin/mknod /dev/rtc c 10 135
+
+# comment next when you use alsa
+/bin/mknod /dev/audio c 14 4
+
+
+echo "Starting mdevd ..."
+/bin/echo /sbin/mdev > /proc/sys/kernel/hotplug
+mdev -s 
+
+# networking
+#/sbin/ifconfig lo 127.0.0.1 up
+/sbin/ifconfig eth0 192.168.0.102 netmask 255.255.255.0 up
+/sbin/ifconfig wlan0 192.168.0.102 netmask 255.255.255.0 up
+/sbin/route add default gw 192.168.0.1 netmask 0.0.0.0 dev eth0
+/sbin/route add default gw 192.168.0.1 netmask 0.0.0.0 dev wlan0
+/bin/echo nameserver 192.168.0.1 > /etc/resolv.conf
+/usr/sbin/wpa_supplicant -B -Dwext -iwlan0 -c/etc/wpa_supplicant.conf
+
+# telnet server
+/usr/sbin/telnetd &
+/usr/sbin/inetd
+
+#ssh
+/usr/sbin/sshd
+
+# NFS mounting
+#/sbin/portmap
+
+# mixer volume
+#/usr/bin/mixer vol 80 > /dev/null 2>&1
+
+/bin/mknod /dev/tcsm c 238 73
+# set the system time from the hardware clock
+#/sbin/hwclock -s
+
+# run cpufreqd
+#/cpufreqd/sbin/cpufreqd
+
+# mount mtd partitions
+#/bin/mount -t yaffs2 /dev/mtdblock2 /mnt/mtdblock2
+#/bin/mount -t yaffs2 /dev/mtdblock3 /mnt/mtdblock3
+#/bin/mount -t vfat /dev/mtdblock5 /mnt/mtdblock5
+
+
+if ! [ -d /HNApp ]; then
+	mkdir /HNApp
+	mkfs.ext4 /dev/ndextern
+fi
+mount /dev/ndextern /HNApp
+
+/HNApp/app.sh &
+
+

@@ -1,0 +1,14 @@
+<RCC>
+    <qresource prefix="/">
+        <file>pictures_k1160/bt_back_disable.png</file>
+        <file>pictures_k1160/bt_back_hover.png</file>
+        <file>pictures_k1160/bt_back_normal.png</file>
+        <file>pictures_k1160/bt_back_press.png</file>
+        <file>pictures_k1160/bt_login_disable.png</file>
+        <file>pictures_k1160/bt_login_hover.png</file>
+        <file>pictures_k1160/bt_login_normal.png</file>
+        <file>pictures_k1160/bt_login_press.png</file>
+        <file>pictures_k1160/bk_progress_background.png</file>
+        <file>pictures_k1160/bk_progress_chunk.png</file>
+    </qresource>
+</RCC>

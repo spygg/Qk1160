@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/bk">
+        <file>images/start_bk.png</file>
+    </qresource>
+</RCC>

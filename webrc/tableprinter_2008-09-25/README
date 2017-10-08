@@ -1,0 +1,32 @@
+09-03-2008
+
+TableViewPrinter description:
+Project TableViewPrinter started in November,  2007.
+The purpose of the project is to work out a fast and flexibile QTableView widget content printer.
+
+Feature list:
+- Work with Qt4.3
+- Print preview
+- Zoom in Preview window
+- Buttons, slider and spinBox for page selection in Preview window
+- Page setup window
+- TableView column size and header text represented in print result.
+- Fetches only the required data from model
+
+Install:
+
+qmake
+make
+
+
+Changes [25-09-2008]:
+- Alternate row coloring
+- Grid around cells
+- Bugfixes
+
+
+Kund Gordos
+
+2008.03.09
+
+gordos.kund_gmail.com

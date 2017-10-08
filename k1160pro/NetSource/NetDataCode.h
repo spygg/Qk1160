@@ -1,0 +1,125 @@
+#ifndef NETDATACODE_H
+#define NETDATACODE_H
+#include    <QString>
+#include    <QByteArray>
+
+#define NETDATAPORTISZERO                   0
+#define NETDATACODE_TIMER30S                30000
+
+#define NETCOMMANDTAGHEAD                   0xAA55
+#define NETCOMMANDTAGTAIL                   0xCC33C33C
+
+#define NETCOMMANDREGISTER                  0x0101
+#define NETCOMMANDLOGIN                     0x0102
+#define NETCOMMANDEXIT                      0x0104
+#define NETCOMMANDVERIFYCODE                0x0105
+#define NETCOMMANDNEXTAREA                  0x1010
+#define NETCOMMANDNEXTMACHINE               0x1011
+
+#define NETCOMMANDSEARCHDIR                 0x0200
+#define NETCOMMANDADDDIR                    0x0201
+#define NETCOMMANDALTERDIR                  0x0202
+#define NETCOMMANDDELETEDIR                 0x0203
+#define NETCOMMANDSEARCHFILE                0x0204
+#define NETCOMMANDDELETEFILE                0x0205
+#define NETCOMMANDSEARCHPUBLICDIR           0x0210
+#define NETCOMMANDSEARCHPUBLICFILE          0x0211
+
+#define NETCOMMANDSENDFILEINFO              0x0321
+#define NETCOMMANDSENDFILEDATA              0x0322
+#define NETCOMMANDCANCELSENDFILE            0x0323
+
+#define NETCOMMANDDOWNLOADFILE              0x0303
+#define NETCOMMANDDOWNLOADPUBFILE           0x0304
+#define NETCOMMANDCOMFIREFILEINFO           0x0311
+#define NETCOMMADNCANCELREVFILE             0x0312
+#define NETCOMMADNDOWNFILEOK                0x0313
+
+#define NETCOMMANDRECEIVEVERIFYBMP          0x8105
+#define NETCOMMANDREGISTERRESUALT           0x8101
+#define NETCOMMANDLOGINRESUALT              0x8102
+
+#define NETCOMMANDRECEIVEDIRLIST            0x8200
+#define NETCOMMANDRECEIVEADDRESUALT         0x8201
+#define NETCOMMANDRECEIVEALTERRESUALT       0x8202
+#define NETCOMMANDRECEIVEDELETERESUALT      0x8203
+#define NETCOMMANDRECEIVEFILELIST           0x8204
+#define NETCOMMANDRECEIVEPUBLICDIRLIST      0x8210
+#define NETCOMMANDRECEIVEPUBLICFILELIST     0x8211
+
+#define NETCOMMANDRECEIVEFILEINFO           0x8311
+#define NETCOMMANDRECEIVEFILEDATA           0x8312
+#define NETCOMMANDRECEIVECOMFIREFILEINFO    0x8321
+#define NETCOMMANDRECEIVECOMFIREFILEDATA    0x8322
+#define NETCOMMANDRECEIVECOMFIREFILE        0x8323
+
+#define NETCOMMANDRECEIVEDIRYES             0x4f4b
+#define NETCOMMANDRECEIVEDIRNO
+
+
+#define NETCOMMANDDATAREGISTER             "VERIFYCODE=\"%1\"USERNAME=\"%2\"PASSWORD=\"%3\"REALNAME=\"%4\"SEX=\"%5\"BIRTHDAY=\"%6\"MOBILEPHONE=\"%7\"TELEPHONE=\"%8\"EMAIL=\"%9\"AREANO=\"%10\"ZIP=\"%11\"ORGANIZER=\"%12\"ADDRESS=\"%13\""
+#define NETCOMMANDDATAVERIFYCODE           ""
+#define NETCOMMANDDATALOGIN                "USERNAME=\"%1\"PASSWORD=\"%2\""
+
+#define NETCOMMANDDATASEARCHDIR            "%1"
+#define NETCOMMANDDATAADDDIR               "UPCODE=\"%1\"CODE=\"%2\"NAME=\"%3\""
+#define NETCOMMANDDATAALTERDIR             "UPCODE=\"%1\"ID=\"%2\"NAME=\"%3\""
+#define NETCOMMANDDATADELETEDIR            "UPCODE=\"%1\"ID=\"%2\""
+#define NETCOMMANDDATASEARCHFILE           "%1"
+#define NETCOMMANDDATADELETEFILE           "CODE=\"%1\"ID=\"%2\""
+#define NETCOMMANDDATAPUBLICSEARCHDIR      "%1"
+#define NETCOMMANDDATAPUBLICSEARCHFILE     "%1"
+#define NETCOMMADNDATAGETFILEBYID          "%1"
+
+#define NETCOMMANDDATASENDFILEINFO         "CODE=\"%1\"NAME=\"%2\"OVERWRITE=\"%3\"LENGTH=\"%4\""
+
+#define NETSTRINGUPCODE                    "UPCODE"
+#define NETSTRINGID                        "ID"
+#define NETSTRINGCODE                      "CODE"
+#define NETSTRINGNAME                      "NAME"
+#define NETSTRINGSIZE                      "SIZE"
+#define NETSTRINGDATE                      "DATE"
+#define NETSTRINGFILENO                    "FILENO"
+#define NETSTRINGLENGTH                    "LENGTH"
+#define NETSTRINGSMYBOL                     "\""
+
+struct USERREGINFO{
+    QString str_VerifyCode;
+    QString str_UserName;
+    QString str_UserPasswd;
+    QString str_RealName;
+    QString str_Sex;
+    QString str_Birthday;
+    QString str_MobliePhone;
+    QString str_TelePhone;
+    QString str_AreNo;
+    QString str_Email;
+    QString str_zip;
+    QString str_Organizer;
+    QString str_Addr;
+};
+
+
+
+enum NETCONTROLCOMMAND{
+    COMMANDREGISTER,
+    COMMANDLOGIN,
+    COMMANDEXIT,
+    COMMANDVERIFYCODE,
+    COMMANDNEXTAREA,
+    COMMANDNEXTMACHINE,
+    COMMANDADDDIR,
+    COMMANDSEARCHDIR,
+    COMMANDSEARCHFILE,
+    COMMANDSENDFILEINFO,
+    COMMANDSENDFILEDATA,
+    COMMANDCANCELFILEDATA,
+    COMMANDDOWNLOADFILE,
+    COMMANDDOWNLOADPUBFILE,
+    COMMANDDOWNCOMFIERFILEINFO,
+    COMMANDCANCEREVFILE,
+    COMMANDDOWNLOADFILEOK
+};
+
+
+#endif // NETDATACODE_H
